@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import GoogleImg from '../assets/google-auth.png'
+import AppleImg from '../assets/apple-auth.png'
+import facebookImg from '../assets/facebook-auth.png'
 
 const LoginScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -31,9 +34,9 @@ const LoginScreen = ({ navigation }) => {
       </TouchableOpacity>
       <Text style={styles.or}>Or continue with</Text>
       <View style={styles.socialIcons}>
-        <Image source={{ uri: 'apple_icon_url' }} style={styles.icon} />
-        <Image source={{ uri: 'google_icon_url' }} style={styles.icon} />
-        <Image source={{ uri: 'facebook_icon_url' }} style={styles.icon} />
+        <Image source={GoogleImg} style={styles.icon} />
+        <Image source={AppleImg} style={styles.icon} />
+        <Image source={facebookImg} style={styles.icon} />
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text style={styles.register}>Haven't an account? Register</Text>
@@ -45,9 +48,9 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    paddingTop: 100,
   },
   title: {
     fontSize: 30,
@@ -96,6 +99,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginHorizontal: 10,
+    marginBottom: 10,
+    marginTop: 10,
   },
   register: {
     textAlign: 'center',

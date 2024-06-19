@@ -1,15 +1,36 @@
 import React from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet } from 'react-native';
+import { Image } from'react-native';
+import Avatar from '../assets/avatar.png';
+import coca from '../assets/coca.png';
+import mtn from '../assets/mtn.png';
+import telecel from '../assets/Telecel.png';
+import beats from '../assets/Beats.png';
+import burger from '../assets/burger.png';
+import apple from '../assets/apple-auth.png';
+import google from '../assets/google-auth.png';
+import kfc from '../assets/kfc.png';
 
 const featuredJobs = [
-  { id: '1', title: 'Software Engineer', company: 'Facebook', salary: '$180,000', location: 'Accra, Ghana' },
-  { id: '2', title: 'Product Manager', company: 'Google', salary: '$160,000', location: 'Mountain View, CA' },
+  { id: '1', title: 'Software Engineer', company: 'Telecel', salary: '$180,000', location: 'Accra, Ghana', img: burger },
+  { id: '2', title: 'Cook', company: 'Apple', salary: '$60,000', location: 'Mountain View, CA', img: apple },
+  { id: '3', title: 'Snr Research Engineer', company: 'Google', salary: '$260,000', location: 'Mountain View, CA', img: google },
+  { id: '4', title: 'Product Manager', company: 'Telecel', salary: '$160,000', location: 'Kumasi, GH', img: telecel },
+  { id: '5', title: 'Network Engineer', company: 'MTN', salary: '$130,000', location: 'Kumasi, GH', img: mtn },
+  { id: '6', title: 'cyberSecurity Manager', company: 'Google', salary: '$180,000', location: 'Miami, US', img: google },
+  { id: '7', title: 'Sales Manager', company: 'KFC', salary: '$140,000', location: 'Koforidua, GH', img: kfc },
+  { id: '8', title: 'Snr Software Engineer', company: 'MTN', salary: '$130,000', location: 'Takoradi, GH', img: mtn },
 ];
 
 const popularJobs = [
-  { id: '1', title: 'Jr Executive', company: 'Burger King', salary: '$96,000/y', location: 'Los Angeles, US' },
-  { id: '2', title: 'Product Manager', company: 'Beats', salary: '$84,000/y', location: 'Florida, US' },
-  { id: '3', title: 'Product Manager', company: 'Facebook', salary: '$86,000/y', location: 'Florida, US' },
+  { id: '1', title: 'Jr Executive', company: 'Burger King', salary: '$196,000/y', location: 'Los Angeles, US', img: burger },
+  { id: '2', title: 'Product Manager', company: 'Beats', salary: '$104,000/y', location: 'Florida, US', img: beats },
+  { id: '3', title: 'Data Engineer', company: 'Google', salary: '$86,000/y', location: 'Ghana, GH', img: google },
+  { id: '4', title: 'Front end Engineer', company: 'Apple', salary: '$97,000/y', location: 'Florida, US', img: apple },
+  { id: '5', title: 'Front End Engineer', company: 'MTN Gh', salary: '$76,000/y', location: 'Accra, GH', img: mtn },
+  { id: '6', title: 'Network Engineer', company: 'Coca-Cola', salary: '$86,000/y', location: 'London, UK', img: coca },
+  { id: '7', title: 'Back End Engineer', company: 'Telecel Gh', salary: '$326,000/y', location: 'Accra, GH', img: telecel },
+  { id: '8', title: 'CyberSecurity Engineer', company: 'KFC', salary: '$186,000/y', location: 'Takoradi, GH', img:kfc },
 ];
 
 const HomeScreen = ({ route }) => {
@@ -17,8 +38,16 @@ const HomeScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.email}>{email}</Text>
+      <View style={styles.avatarText}>
+        <View style={styles.auth}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
+        </View>
+
+        <View style={styles.Avatar}>
+          <Image source={Avatar} style={styles.Avatar}/>
+        </View>
+      </View>
       <TextInput style={styles.searchBar} placeholder="Search a job or position" />
       <Text style={styles.sectionTitle}>Featured Jobs</Text>
       <FlatList
@@ -26,10 +55,21 @@ const HomeScreen = ({ route }) => {
         data={featuredJobs}
         renderItem={({ item }) => (
           <View style={styles.featuredJobCard}>
-            <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text>{item.company}</Text>
-            <Text>{item.salary}</Text>
-            <Text>{item.location}</Text>
+            <View style={styles.top}>
+              <View>
+                <Image source={item.img} style={styles.Featimg} />
+              </View>
+
+              <View style={styles.padd}>
+                <Text style={styles.jobTitle}>{item.title}</Text>
+                <Text>{item.company}</Text>
+              </View>
+            </View>
+            
+            <View style={styles.bottom}>
+              <Text>{item.salary}</Text>
+              <Text>{item.location}</Text>
+            </View>
           </View>
         )}
         keyExtractor={(item) => item.id}
@@ -39,10 +79,17 @@ const HomeScreen = ({ route }) => {
         data={popularJobs}
         renderItem={({ item }) => (
           <View style={styles.popularJobCard}>
-            <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text>{item.company}</Text>
-            <Text>{item.salary}</Text>
-            <Text>{item.location}</Text>
+            <View>
+              <Image source={item.img} style={styles.img} />
+            </View>
+            <View style={styles.padd}>
+              <Text style={styles.jobTitle}>{item.title}</Text>
+              <Text>{item.company}</Text>
+            </View>
+            <View style={styles.padd}>
+              <Text>{item.salary}</Text>
+              <Text>{item.location}</Text>
+            </View>
           </View>
         )}
         keyExtractor={(item) => item.id}
@@ -55,6 +102,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingBottom: '30px',
   },
   name: {
     fontSize: 24,
@@ -64,6 +112,20 @@ const styles = StyleSheet.create({
   email: {
     color: 'gray',
     marginLeft: 20,
+  },
+  avatarText: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    alignItems: 'center',
+  },
+  Avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    backgroundColor: '#eee',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
   },
   searchBar: {
     margin: 20,
@@ -79,17 +141,60 @@ const styles = StyleSheet.create({
   },
   featuredJobCard: {
     padding: 20,
+    width: 300,
+    height: '80%',
     backgroundColor: '#eee',
     margin: 10,
     borderRadius: 10,
+    flexDirection: 'column',
+    justifyContent:'space-between',
+    gap: 10,
+  },
+  top:{
+    flexDirection: 'row',
+    justifyContent:'',
+    alignItems: 'center',
+  },
+  bottom:{
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    alignItems: 'center',
+    gap: 10,
+  },
+  Featimg: {
+    width: 70,
+    height: 70,
+    borderRadius: 14,
+    backgroundColor: '#fff',
+  },
+  img:{
+    width: 90,
+    height: 90,
+    borderRadius: 25,
+    marginLeft: 'auto',
+  },
+  padd: {
+    padding: 10,
+    flexDirection: 'column',
+    justifyContent:'space-between',
+    gap: 10,
   },
   popularJobCard: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    alignItems: 'center',
     padding: 20,
     backgroundColor: '#fff',
+    shadowColor:'#ddd',
+    shadowOffset: { width: 0, height: 2,},
+    shadowOpacity: 8.25,
+    shadowRadius: 5.84,
+    elevation: 9,
     margin: 10,
     borderRadius: 10,
-    borderColor: '#ddd',
+    borderColor: '#fff',
     borderWidth: 1,
+    gap: 10,  
   },
   jobTitle: {
     fontWeight: 'bold',
