@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, FlatList, StyleSheet } from 'react-native';
 import { Image } from'react-native';
-import Avatar from '../assets/avatar.png';
+import Avatar from '../assets/avatar.jpeg';
 import coca from '../assets/coca.png';
 import mtn from '../assets/mtn.png';
 import telecel from '../assets/Telecel.png';
