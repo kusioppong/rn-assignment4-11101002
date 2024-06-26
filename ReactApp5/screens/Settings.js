@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { View, Text, StyleSheet, Switch } from "react-native";
 import { ThemeContext } from "../context/ThemeContext";
+import { rightArrow } from "../assets/rightarrow.png";
 
 const SettingsScreen = () => {
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
@@ -9,21 +10,25 @@ const SettingsScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Settings</Text>
+
       <View style={styles.setting}>
-        <Text>Change Password</Text>
+        <Text style={{ fontSize: 17 }}>My Profile</Text>
+      </View>
+
+      <View style={styles.setting}>
+        <Text style={{ fontSize: 17 }}>Language</Text>
+      </View>
+
+      <View style={styles.setting}>
+        <Text style={{ fontSize: 17 }}>Change Password</Text>
       </View>
       <View style={styles.setting}>
-        <Text>Privacy Policy</Text>
+        <Text style={{ fontSize: 17 }}>Privacy Policy</Text>
       </View>
+
       <View style={styles.setting}>
-        <Text>Dark Theme</Text>
+        <Text style={{ fontSize: 17 }}>Dark Theme</Text>
         <Switch value={isDarkTheme} onValueChange={toggleTheme} />
-      </View>
-      <View style={styles.setting}>
-        <Text>Language</Text>
-      </View>
-      <View style={styles.setting}>
-        <Text>My Profile</Text>
       </View>
     </View>
   );
@@ -39,12 +44,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
     color: "#333",
+    textAlign: "center",
+    fontSize: 44,
   },
   setting: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginVertical: 10,
-    padding: 10,
+    padding: 30,
     backgroundColor: "#ffffff",
     borderRadius: 5,
     shadowColor: "#000",
