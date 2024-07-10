@@ -1,28 +1,26 @@
-# rn-assignment5-ID
+# React Native Assignment 7
 
-## Description
+## Design Choices
 
-This mobile application was built using React Native for the DCIT202 Mobile Application Development course assignment. The app features a Home screen displaying user information and transactions, and a Settings screen with options to change password, view privacy policy, adjust theme, change language, and view profile. Users can switch between light and dark themes.
+- Used React Navigation for navigation between screens.
+- Used Axios for fetching data from the external API.
+- Utilized AsyncStorage for local data storage.
+
+## Data Storage
+
+- Products are fetched from [Fake Store API](https://fakestoreapi.com/).
+- Selected items are stored locally using AsyncStorage.
 
 ## Screenshots
 
-![Home Screen](screenshots/home.png)
-![Settings Screen](screenshots/settings.png)
+- (Include screenshots of your app here)
 
-## Installation
+## Setup
 
 1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Run the app: `npx react-native run-android` or `npx react-native run-ios`
+2. Run `npm install`.
+3. Run `npx react-native run-android` or `npx react-native run-ios` to start the application.
 
-## Features
+## Resources
 
-- User Information and Transactions on Home Screen
-- Settings with multiple options
-- Light/Dark Theme Switching
-
-## Custom Components
-
-- TransactionItem
-- CardDetails
-- SettingOption
+- UI Design: [Google Drive Link](https://drive.google.com/drive/folders/1AksVbo-8k_n-LpJCxaExO9GrJCAceaZ8?usp=sharing)
